@@ -22,7 +22,7 @@ class Ui_GameWindow(object):
     def setupUi(self, GameWindow):
         if not GameWindow.objectName():
             GameWindow.setObjectName(u"GameWindow")
-        GameWindow.resize(414, 383)
+        GameWindow.resize(411, 382)
         self.RandomPicture = QLabel(GameWindow)
         self.RandomPicture.setObjectName(u"RandomPicture")
         self.RandomPicture.setGeometry(QRect(78, 29, 251, 101))

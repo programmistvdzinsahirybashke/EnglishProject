@@ -27,6 +27,7 @@ class CrocodileGame(QMainWindow):
         self.new_window.show()
 
     def open_settings_window(self):
+        self.hide()
         self.new_window = QtWidgets.QDialog()
         self.ui_window = Ui_SettingsWindow()
         self.ui_window.setupUi(self.new_window)
@@ -38,7 +39,7 @@ class CrocodileGame(QMainWindow):
     def on_clicked(self):
         if self.sender().isChecked():
             color = self.sender().text()
-            window.setStyleSheet(f'background-color: {color};')
+            self.setStyleSheet(f'background-color: {color};')
 
 
 if __name__ == "__main__":

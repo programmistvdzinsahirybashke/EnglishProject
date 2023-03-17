@@ -22,7 +22,7 @@ class Ui_SettingsWindow(object):
     def setupUi(self, SettingsWindow):
         if not SettingsWindow.objectName():
             SettingsWindow.setObjectName(u"SettingsWindow")
-        SettingsWindow.resize(400, 339)
+        SettingsWindow.resize(411, 382)
         font = QFont()
         font.setFamilies([u"Montserrat"])
         SettingsWindow.setFont(font)
