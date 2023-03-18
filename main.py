@@ -1,9 +1,14 @@
+import sqlite3
 import sys
+
 from PySide6 import QtWidgets
+
 from ui_main import *
 from ui_game import *
 from ui_settings import *
 
+conn = sqlite3.connect('db/words.db', check_same_thread=False)
+cursor = conn.cursor()
 
 class CrocodileGame(QMainWindow):
     def __init__(self):
@@ -19,27 +24,43 @@ class CrocodileGame(QMainWindow):
         self.show()
 
     def open_game_window(self):
-        self.hide()
-        self.new_window = QtWidgets.QDialog()
-        self.ui_window = Ui_GameWindow()
-        self.ui_window.setupUi(self.new_window)
-        self.ui_window.Back.clicked.connect(self.open_main_window)
-        self.new_window.show()
+        self.create_new_window(Ui_GameWindow)
+        self.get_next_word()
+
+        self.ui_window.NextWord.clicked.connect(self.get_next_word)
 
     def open_settings_window(self):
-        self.hide()
-        self.new_window = QtWidgets.QDialog()
-        self.ui_window = Ui_SettingsWindow()
-        self.ui_window.setupUi(self.new_window)
+        self.create_new_window(Ui_SettingsWindow)
+
         self.ui_window.Back.clicked.connect(self.open_main_window)
-        self.new_window.show()
         self.ui_window.radioButtonSetWhite.toggled.connect(self.on_clicked)
         self.ui_window.radioButtonSetGreen.toggled.connect(self.on_clicked)
+
+    def create_new_window(self, page):
+        self.hide()
+        self.new_window = QtWidgets.QWidget()
+        self.ui_window = page()
+        self.ui_window.setupUi(self.new_window)
+        self.ui_window.Back.clicked.connect(self.open_main_window)
+        self.new_window.setWindowIcon(QIcon('top_logo.png'))
+        self.new_window.show()
+
+    def get_next_word(self):
+        cursor.execute("SELECT * FROM allwords ORDER BY RANDOM() LIMIT 1")
+        record = cursor.fetchall()
+
+        for row in record:
+            random_word = row[1]
+            random_picture = QPixmap()
+            random_picture.loadFromData(row[2])
+
+            self.ui_window.RandomWord.setText(f'{random_word}')
+            self.ui_window.RandomPicture.setPixmap(random_picture)
 
     def on_clicked(self):
         if self.sender().isChecked():
             color = self.sender().text()
-            self.setStyleSheet(f'background-color: {color};')
+            app.setStyleSheet(f'QWidget {{background-color: {color};}}')
 
 
 if __name__ == "__main__":
