@@ -22,7 +22,7 @@ class Ui_StartWindow(object):
     def setupUi(self, StartWindow):
         if not StartWindow.objectName():
             StartWindow.setObjectName(u"StartWindow")
-        StartWindow.resize(412, 382)
+        StartWindow.resize(540, 600)
         font = QFont()
         font.setStrikeOut(False)
         StartWindow.setFont(font)
@@ -30,30 +30,31 @@ class Ui_StartWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(70, 30, 291, 51))
+        self.label.setGeometry(QRect(60, 30, 431, 81))
         font1 = QFont()
         font1.setFamilies([u"Montserrat ExtraBold"])
-        font1.setPointSize(36)
+        font1.setPointSize(60)
         font1.setBold(True)
         font1.setItalic(False)
+        font1.setStrikeOut(False)
         font1.setStyleStrategy(QFont.PreferAntialias)
         self.label.setFont(font1)
         self.label.setStyleSheet(u"QLabel {  color : rgb(0, 170, 127); }")
         self.SettingsButton = QPushButton(self.centralwidget)
         self.SettingsButton.setObjectName(u"SettingsButton")
-        self.SettingsButton.setGeometry(QRect(80, 290, 251, 45))
+        self.SettingsButton.setGeometry(QRect(60, 510, 420, 60))
         palette = QPalette()
-        brush = QBrush(QColor(120, 120, 120, 255))
+        brush = QBrush(QColor(255, 255, 255, 255))
         brush.setStyle(Qt.SolidPattern)
         palette.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        brush1 = QBrush(QColor(3, 255, 150, 255))
+        brush1 = QBrush(QColor(102, 205, 170, 255))
         brush1.setStyle(Qt.SolidPattern)
         palette.setBrush(QPalette.Active, QPalette.Button, brush1)
         palette.setBrush(QPalette.Active, QPalette.Text, brush)
         palette.setBrush(QPalette.Active, QPalette.ButtonText, brush)
         palette.setBrush(QPalette.Active, QPalette.Base, brush1)
         palette.setBrush(QPalette.Active, QPalette.Window, brush1)
-        brush2 = QBrush(QColor(120, 120, 120, 128))
+        brush2 = QBrush(QColor(255, 255, 255, 128))
         brush2.setStyle(Qt.SolidPattern)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette.setBrush(QPalette.Active, QPalette.PlaceholderText, brush2)
@@ -78,19 +79,20 @@ class Ui_StartWindow(object):
 #endif
         self.SettingsButton.setPalette(palette)
         font2 = QFont()
-        font2.setFamilies([u"Montserrat Medium"])
-        font2.setPointSize(20)
-        font2.setBold(False)
-        font2.setItalic(True)
+        font2.setFamilies([u"Montserrat SemiBold"])
+        font2.setPointSize(32)
+        font2.setBold(True)
+        font2.setItalic(False)
+        font2.setStrikeOut(False)
         font2.setKerning(True)
         font2.setStyleStrategy(QFont.PreferAntialias)
         self.SettingsButton.setFont(font2)
         self.SettingsButton.setStyleSheet(u"QPushButton {\n"
 "    color: #333;\n"
-"    border: 1px solid #555;\n"
-"    border-radius: 20px;\n"
+"    border: 2px solid white;\n"
+"    border-radius: 30px;\n"
 "    border-style: outset;\n"
-"    background: rgb(3, 255, 150);\n"
+"    background: rgb(102,205,170);\n"
 "    padding: 5px;\n"
 "    }\n"
 "\n"
@@ -105,24 +107,24 @@ class Ui_StartWindow(object):
 "\n"
 "QPushButton\n"
 "{\n"
-"   color:rgb(120,120,120);\n"
+"   color:white;\n"
 "}")
         self.label_2 = QLabel(self.centralwidget)
         self.label_2.setObjectName(u"label_2")
+        self.label_2.setGeometry(QRect(20, 90, 491, 341))
         self.label_2.setPixmap(QPixmap("top_logo.png"))
-        self.label_2.setGeometry(QRect(80, 90, 251, 131))
         self.label_2.setScaledContents(True)
         self.StartButton = QPushButton(self.centralwidget)
         self.StartButton.setObjectName(u"StartButton")
-        self.StartButton.setGeometry(QRect(80, 230, 251, 45))
+        self.StartButton.setGeometry(QRect(60, 440, 420, 60))
         self.StartButton.setFont(font2)
         self.StartButton.setAcceptDrops(False)
         self.StartButton.setStyleSheet(u"QPushButton {\n"
 "    color: #333;\n"
-"    border: 1px solid #555;\n"
-"    border-radius: 20px;\n"
+"    border: 2px solid white;\n"
+"    border-radius: 30px;\n"
 "    border-style: outset;\n"
-"    background: rgb(3, 255, 150);\n"
+"    background: rgb(102,205,170);\n"
 "    padding: 5px;\n"
 "    }\n"
 "\n"
@@ -137,10 +139,14 @@ class Ui_StartWindow(object):
 "\n"
 "QPushButton\n"
 "{\n"
-"   color:rgb(120,120,120);\n"
+"   color:white;\n"
 "}")
         self.StartButton.setAutoDefault(False)
         StartWindow.setCentralWidget(self.centralwidget)
+        self.SettingsButton.raise_()
+        self.label_2.raise_()
+        self.StartButton.raise_()
+        self.label.raise_()
 
         self.retranslateUi(StartWindow)
 
@@ -152,6 +158,6 @@ class Ui_StartWindow(object):
         self.label.setText(QCoreApplication.translate("StartWindow", u"Crocodile!", None))
         self.SettingsButton.setText(QCoreApplication.translate("StartWindow", u"Settings", None))
         self.label_2.setText("")
-        self.StartButton.setText(QCoreApplication.translate("StartWindow", u"Start", None))
+        self.StartButton.setText(QCoreApplication.translate("StartWindow", u"Start!", None))
     # retranslateUi
 

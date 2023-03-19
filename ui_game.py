@@ -22,29 +22,83 @@ class Ui_GameWindow(object):
     def setupUi(self, GameWindow):
         if not GameWindow.objectName():
             GameWindow.setObjectName(u"GameWindow")
-        GameWindow.resize(406, 404)
+        GameWindow.resize(540, 600)
         self.RandomPicture = QLabel(GameWindow)
         self.RandomPicture.setObjectName(u"RandomPicture")
-        self.RandomPicture.setGeometry(QRect(50, 20, 291, 191))
+        self.RandomPicture.setGeometry(QRect(40, 60, 441, 311))
+        self.RandomPicture.setAutoFillBackground(False)
+        self.RandomPicture.setStyleSheet(u"border: 2px solid rgb(102,205,170);")
         self.RandomPicture.setScaledContents(True)
         self.RandomWord = QLabel(GameWindow)
         self.RandomWord.setObjectName(u"RandomWord")
-        self.RandomWord.setGeometry(QRect(50, 260, 291, 41))
+        self.RandomWord.setGeometry(QRect(40, 400, 451, 71))
         font = QFont()
         font.setFamilies([u"Montserrat Medium"])
-        font.setPointSize(20)
+        font.setPointSize(40)
         self.RandomWord.setFont(font)
+        self.RandomWord.setAutoFillBackground(False)
+        self.RandomWord.setStyleSheet(u"\n"
+"\n"
+"\n"
+"QLabel {  color : rgb(255, 255, 255)};\n"
+"border: 2px solid #baedff;\n"
+"border-radius: 35px; background: rgb(85, 170, 255)rgba(102, 205, 170, 190); ")
+        self.RandomWord.setAlignment(Qt.AlignCenter)
         self.Back = QPushButton(GameWindow)
         self.Back.setObjectName(u"Back")
-        self.Back.setGeometry(QRect(50, 320, 142, 41))
+        self.Back.setGeometry(QRect(30, 510, 220, 60))
         font1 = QFont()
         font1.setFamilies([u"Montserrat Medium"])
-        font1.setPointSize(14)
+        font1.setPointSize(20)
         self.Back.setFont(font1)
+        self.Back.setStyleSheet(u"QPushButton {\n"
+"    color: #333;\n"
+"    border: 2px solid white;\n"
+"    border-radius: 30px;\n"
+"    border-style: outset;\n"
+"    background: rgb(102,205,170);\n"
+"    padding: 5px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    background: rgb(3, 205, 150);\n"
+"    }\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border-style: inset;\n"
+"    background: rgb(70, 255, 150);\n"
+"    }\n"
+"\n"
+"QPushButton\n"
+"{\n"
+"   color:white;\n"
+"}")
         self.NextWord = QPushButton(GameWindow)
         self.NextWord.setObjectName(u"NextWord")
-        self.NextWord.setGeometry(QRect(200, 320, 141, 41))
+        self.NextWord.setGeometry(QRect(280, 510, 220, 60))
         self.NextWord.setFont(font1)
+        self.NextWord.setStyleSheet(u"QPushButton {\n"
+"    color: #333;\n"
+"    border: 2px solid white;\n"
+"    border-radius: 30px;\n"
+"    border-style: outset;\n"
+"    background: rgb(102,205,170);\n"
+"    padding: 5px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    background: rgb(3, 205, 150);\n"
+"    }\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border-style: inset;\n"
+"    background: rgb(70, 255, 150);\n"
+"    }\n"
+"\n"
+"QPushButton\n"
+"{\n"
+"   color:white;\n"
+"}")
 
         self.retranslateUi(GameWindow)
 
@@ -54,7 +108,7 @@ class Ui_GameWindow(object):
     def retranslateUi(self, GameWindow):
         GameWindow.setWindowTitle(QCoreApplication.translate("GameWindow", u"Crocodile!", None))
         self.RandomPicture.setText("")
-        self.RandomWord.setText("")
+        self.RandomWord.setText(QCoreApplication.translate("GameWindow", u"Sunflower", None))
         self.Back.setText(QCoreApplication.translate("GameWindow", u"Back", None))
         self.NextWord.setText(QCoreApplication.translate("GameWindow", u"Next word", None))
     # retranslateUi

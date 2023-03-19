@@ -33,8 +33,8 @@ class CrocodileGame(QMainWindow):
         self.create_new_window(Ui_SettingsWindow)
 
         self.ui_window.Back.clicked.connect(self.open_main_window)
-        self.ui_window.radioButtonSetWhite.toggled.connect(self.on_clicked)
-        self.ui_window.radioButtonSetGreen.toggled.connect(self.on_clicked)
+        self.ui_window.radioButtonSetGreen.toggled.connect(self.set_green_theme)
+        self.ui_window.radioButtonSetDark.toggled.connect(self.set_dark_theme)
 
     def create_new_window(self, page):
         self.hide()
@@ -57,10 +57,15 @@ class CrocodileGame(QMainWindow):
             self.ui_window.RandomWord.setText(f'{random_word}')
             self.ui_window.RandomPicture.setPixmap(random_picture)
 
-    def on_clicked(self):
-        if self.sender().isChecked():
-            color = self.sender().text()
+    def set_green_theme(self):
+            color = "#66CDAA"
             app.setStyleSheet(f'QWidget {{background-color: {color};}}')
+
+    def set_dark_theme(self):
+            color = "#baedff"
+            app.setStyleSheet(f'QWidget {{background-color: {color};}}')
+
+
 
 
 if __name__ == "__main__":
