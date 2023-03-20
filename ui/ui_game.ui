@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>60</y>
+     <y>20</y>
      <width>441</width>
      <height>311</height>
     </rect>
@@ -39,7 +39,7 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>400</y>
+     <y>350</y>
      <width>451</width>
      <height>71</height>
     </rect>
@@ -152,6 +152,124 @@ QPushButton
    </property>
    <property name="text">
     <string>Next word</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="StartTimer">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>440</y>
+     <width>121</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Montserrat Medium</family>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    color: #333;
+    border: 2px solid white;
+    border-radius: 30px;
+    border-style: outset;
+    background: rgb(102,205,170);
+    padding: 5px;
+    }
+
+QPushButton:hover {
+    background: rgb(3, 205, 150);
+    }
+
+QPushButton:pressed {
+    border-style: inset;
+    background: rgb(70, 255, 150);
+    }
+
+QPushButton
+{
+   color:white;
+}</string>
+   </property>
+   <property name="text">
+    <string>Start</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Time">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>440</y>
+     <width>181</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Montserrat</family>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+
+
+QLabel {  color : rgb(255, 255, 255)};
+border: 2px solid #baedff;
+border-radius: 30px; background: rgb(102, 205, 170); 
+
+</string>
+   </property>
+   <property name="text">
+    <string>Your time</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="SetTime">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>440</y>
+     <width>131</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Montserrat Medium</family>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    color: #333;
+    border: 2px solid white;
+    border-radius: 30px;
+    border-style: outset;
+    background: rgb(102,205,170);
+    padding: 5px;
+    }
+
+QPushButton:hover {
+    background: rgb(3, 205, 150);
+    }
+
+QPushButton:pressed {
+    border-style: inset;
+    background: rgb(70, 255, 150);
+    }
+
+QPushButton
+{
+   color:white;
+}</string>
+   </property>
+   <property name="text">
+    <string>Set time</string>
    </property>
   </widget>
  </widget>

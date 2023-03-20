@@ -25,13 +25,13 @@ class Ui_GameWindow(object):
         GameWindow.resize(540, 600)
         self.RandomPicture = QLabel(GameWindow)
         self.RandomPicture.setObjectName(u"RandomPicture")
-        self.RandomPicture.setGeometry(QRect(40, 60, 441, 311))
+        self.RandomPicture.setGeometry(QRect(40, 20, 441, 311))
         self.RandomPicture.setAutoFillBackground(False)
         self.RandomPicture.setStyleSheet(u"border: 2px solid rgb(102,205,170);")
         self.RandomPicture.setScaledContents(True)
         self.RandomWord = QLabel(GameWindow)
         self.RandomWord.setObjectName(u"RandomWord")
-        self.RandomWord.setGeometry(QRect(40, 400, 451, 71))
+        self.RandomWord.setGeometry(QRect(40, 350, 451, 71))
         font = QFont()
         font.setFamilies([u"Montserrat Medium"])
         font.setPointSize(40)
@@ -99,6 +99,74 @@ class Ui_GameWindow(object):
 "{\n"
 "   color:white;\n"
 "}")
+        self.StartTimer = QPushButton(GameWindow)
+        self.StartTimer.setObjectName(u"StartTimer")
+        self.StartTimer.setGeometry(QRect(230, 440, 121, 60))
+        self.StartTimer.setFont(font1)
+        self.StartTimer.setStyleSheet(u"QPushButton {\n"
+"    color: #333;\n"
+"    border: 2px solid white;\n"
+"    border-radius: 30px;\n"
+"    border-style: outset;\n"
+"    background: rgb(102,205,170);\n"
+"    padding: 5px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    background: rgb(3, 205, 150);\n"
+"    }\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border-style: inset;\n"
+"    background: rgb(70, 255, 150);\n"
+"    }\n"
+"\n"
+"QPushButton\n"
+"{\n"
+"   color:white;\n"
+"}")
+        self.Time = QLabel(GameWindow)
+        self.Time.setObjectName(u"Time")
+        self.Time.setGeometry(QRect(40, 440, 181, 61))
+        font2 = QFont()
+        font2.setFamilies([u"Montserrat"])
+        font2.setPointSize(20)
+        self.Time.setFont(font2)
+        self.Time.setStyleSheet(u"\n"
+"\n"
+"\n"
+"QLabel {  color : rgb(255, 255, 255)};\n"
+"border: 2px solid #baedff;\n"
+"border-radius: 30px; background: rgb(102, 205, 170); \n"
+"\n"
+"")
+        self.Time.setAlignment(Qt.AlignCenter)
+        self.SetTime = QPushButton(GameWindow)
+        self.SetTime.setObjectName(u"SetTime")
+        self.SetTime.setGeometry(QRect(360, 440, 131, 60))
+        self.SetTime.setFont(font1)
+        self.SetTime.setStyleSheet(u"QPushButton {\n"
+"    color: #333;\n"
+"    border: 2px solid white;\n"
+"    border-radius: 30px;\n"
+"    border-style: outset;\n"
+"    background: rgb(102,205,170);\n"
+"    padding: 5px;\n"
+"    }\n"
+"\n"
+"QPushButton:hover {\n"
+"    background: rgb(3, 205, 150);\n"
+"    }\n"
+"\n"
+"QPushButton:pressed {\n"
+"    border-style: inset;\n"
+"    background: rgb(70, 255, 150);\n"
+"    }\n"
+"\n"
+"QPushButton\n"
+"{\n"
+"   color:white;\n"
+"}")
 
         self.retranslateUi(GameWindow)
 
@@ -111,5 +179,8 @@ class Ui_GameWindow(object):
         self.RandomWord.setText(QCoreApplication.translate("GameWindow", u"Sunflower", None))
         self.Back.setText(QCoreApplication.translate("GameWindow", u"Back", None))
         self.NextWord.setText(QCoreApplication.translate("GameWindow", u"Next word", None))
+        self.StartTimer.setText(QCoreApplication.translate("GameWindow", u"Start", None))
+        self.Time.setText(QCoreApplication.translate("GameWindow", u"Your time", None))
+        self.SetTime.setText(QCoreApplication.translate("GameWindow", u"Set time", None))
     # retranslateUi
 

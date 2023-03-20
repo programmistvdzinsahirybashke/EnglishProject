@@ -112,7 +112,7 @@ class Ui_StartWindow(object):
         self.label_2 = QLabel(self.centralwidget)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setGeometry(QRect(20, 90, 491, 341))
-        self.label_2.setPixmap(QPixmap("top_logo.png"))
+        self.label_2.setPixmap(QPixmap("media/top_logo.png"))
         self.label_2.setScaledContents(True)
         self.StartButton = QPushButton(self.centralwidget)
         self.StartButton.setObjectName(u"StartButton")
