@@ -3,7 +3,7 @@ import sys
 
 from PySide6 import QtWidgets
 from PySide6.QtCore import QTimer
-from PySide6.QtWidgets import QMessageBox, QInputDialog
+from PySide6.QtWidgets import QMessageBox, QInputDialog, QStyleFactory
 
 from ui_main import *
 from ui_game import *
@@ -15,6 +15,7 @@ cursor = conn.cursor()
 
 word_count = []
 used_words = []
+
 
 # Counting words in the database (table)
 def count_words_in_table():
@@ -33,13 +34,13 @@ count_words_in_table()
 class CrocodileGame(QMainWindow):
     def __init__(self):
         super(CrocodileGame, self).__init__()
-
         self.main_window = Ui_StartWindow()
         self.main_window.setupUi(self)
         self.setWindowIcon(QIcon('media/top_logo.png'))
         self.main_window.StartButton.clicked.connect(self.open_game_window)
         self.main_window.SettingsButton.clicked.connect(self.open_settings_window)
-        self.timer = QTimer(self)
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.update_time)
 
     # Creating and opening start window
     def open_main_window(self):
@@ -67,11 +68,9 @@ class CrocodileGame(QMainWindow):
         self.ui_window.SetTime.clicked.connect(self.set_time)
         self.ui_window.StartTimer.clicked.connect(self.start_timer)
 
-        self.ui_window.count = 0
         self.ui_window.start = False
-        self.ui_window.timer = QTimer(self)
-        self.ui_window.timer.timeout.connect(self.update_time)
-        self.ui_window.timer.start(100)
+        self.ui_window.count = 30
+        self.ui_window.Time.setText(str(self.ui_window.count / 10) + ' s')
 
     # Retreive a random word from the database and check if the words are finished
     def get_next_word(self):
@@ -104,52 +103,45 @@ class CrocodileGame(QMainWindow):
             QMessageBox.about(self, "Game over!", "The database out of words :(")
             self.ui_window.NextWord.setEnabled(False)
 
-        # method called by timer
-
     # Timer controllers
     def update_time(self):
         # checking if flag is true
         if self.ui_window.start:
             # incrementing the counter
             self.ui_window.count -= 1
-
             # timer is completed
             if self.ui_window.count == 0:
                 # making flag false
                 self.ui_window.start = False
-
+                self.ui_window.NextWord.setEnabled(True)
                 # setting text to the label
+
                 QMessageBox.about(self, "Time Out!", "Time Out!")
 
         if self.ui_window.start:
             # getting text from count
             text = str(self.ui_window.count / 10) + " s"
-
             # showing text
             self.ui_window.Time.setText(text)
 
-        # method called by the push button
-
     def set_time(self):
-
         # making flag false
         self.ui_window.start = False
-
         # getting seconds and flag
-        second, done = QInputDialog.getInt(self, 'Seconds', 'Enter Seconds:')
+        second, done = QInputDialog.getInt(self, 'Setting timer', 'Enter Seconds:')
 
         # if flag is true
         if done:
             # changing the value of count
             self.ui_window.count = second * 10
-
             # setting text to the label
             self.ui_window.Time.setText(str(second) + ' s')
 
     def start_timer(self):
         # making flag true
         self.ui_window.start = True
-
+        self.ui_window.NextWord.setEnabled(False)
+        self.timer.start(100)
         # count = 0
         if self.ui_window.count == 0:
             self.ui_window.start = False
@@ -157,18 +149,18 @@ class CrocodileGame(QMainWindow):
     # Creating and opening settings window
     def open_settings_window(self):
         self.create_new_window(Ui_SettingsWindow)
-
         self.ui_window.Back.clicked.connect(self.open_main_window)
         self.ui_window.radioButtonSetGreen.toggled.connect(self.set_green_theme)
         self.ui_window.radioButtonSetDark.toggled.connect(self.set_dark_theme)
         self.ui_window.RestoreSettings.clicked.connect(self.restore_setting)
+        self.ui_window.start = None
 
     def set_green_theme(self):
         color = "#66CDAA"
         app.setStyleSheet(f'QWidget {{background-color: {color};}}')
 
     def set_dark_theme(self):
-        color = "#baedff"
+        color = "#b4babe"
         app.setStyleSheet(f'QWidget {{background-color: {color};}}')
 
     def restore_setting(self):
