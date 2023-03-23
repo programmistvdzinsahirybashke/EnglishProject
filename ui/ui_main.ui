@@ -297,8 +297,8 @@ QPushButton
      <rect>
       <x>20</x>
       <y>90</y>
-      <width>491</width>
-      <height>341</height>
+      <width>501</width>
+      <height>441</height>
      </rect>
     </property>
     <property name="text">

@@ -18,7 +18,7 @@
     <rect>
      <x>40</x>
      <y>20</y>
-     <width>441</width>
+     <width>451</width>
      <height>311</height>
     </rect>
    </property>
@@ -26,12 +26,16 @@
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">border: 2px solid rgb(102,205,170);</string>
+    <string notr="true">border: 2px solid rgb(102,205,170);
+border-radius: 35px;</string>
    </property>
    <property name="text">
     <string/>
    </property>
    <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+   <property name="wordWrap">
     <bool>true</bool>
    </property>
   </widget>
@@ -58,7 +62,7 @@
 
 
 QLabel {  color : rgb(255, 255, 255)};
-border: 2px solid #baedff;
+border: 4px solid #20B2AA;
 border-radius: 35px; background: rgb(85, 170, 255)rgba(102, 205, 170, 190); </string>
    </property>
    <property name="text">
@@ -71,7 +75,7 @@ border-radius: 35px; background: rgb(85, 170, 255)rgba(102, 205, 170, 190); </st
   <widget class="QPushButton" name="Back">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>40</x>
      <y>510</y>
      <width>220</width>
      <height>60</height>
@@ -114,7 +118,7 @@ QPushButton
   <widget class="QPushButton" name="NextWord">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>271</x>
      <y>510</y>
      <width>220</width>
      <height>60</height>
@@ -157,16 +161,16 @@ QPushButton
   <widget class="QPushButton" name="StartTimer">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>271</x>
      <y>440</y>
-     <width>121</width>
+     <width>85</width>
      <height>60</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Montserrat Medium</family>
-     <pointsize>20</pointsize>
+     <pointsize>18</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -202,7 +206,7 @@ QPushButton
     <rect>
      <x>40</x>
      <y>440</y>
-     <width>181</width>
+     <width>220</width>
      <height>61</height>
     </rect>
    </property>
@@ -241,7 +245,7 @@ border-radius: 30px; background: rgb(102, 205, 170);
    <property name="font">
     <font>
      <family>Montserrat Medium</family>
-     <pointsize>20</pointsize>
+     <pointsize>18</pointsize>
     </font>
    </property>
    <property name="styleSheet">

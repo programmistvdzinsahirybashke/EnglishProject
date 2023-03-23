@@ -1,6 +1,7 @@
 import sqlite3
 import sys
 
+import qdarktheme
 from PySide6 import QtWidgets
 from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QMessageBox, QInputDialog, QStyleFactory
@@ -100,7 +101,8 @@ class CrocodileGame(QMainWindow):
                 self.ui_window.RandomWord.setText(f'{random_word}')
                 self.ui_window.RandomPicture.setPixmap(random_picture)
 
-            QMessageBox.about(self, "Game over!", "The database out of words :(")
+            QMessageBox.about(self, "Game over!",
+                              "<font>" "<p style='font-size: 26px'>The database out of words :( </p>")
             self.ui_window.NextWord.setEnabled(False)
 
     # Timer controllers
@@ -115,8 +117,7 @@ class CrocodileGame(QMainWindow):
                 self.ui_window.start = False
                 self.ui_window.NextWord.setEnabled(True)
                 # setting text to the label
-
-                QMessageBox.about(self, "Time Out!", "Time Out!")
+                QMessageBox.about(self, "Time Out!", "<font>" "<p style='font-size: 26px'>Time Out!</p>")
 
         if self.ui_window.start:
             # getting text from count
@@ -156,16 +157,39 @@ class CrocodileGame(QMainWindow):
         self.ui_window.start = None
 
     def set_green_theme(self):
-        color = "#66CDAA"
-        app.setStyleSheet(f'QWidget {{background-color: {color};}}')
+        color = "#9FE2BF"
+        app.setStyleSheet(f'QWidget {{background-color: {color};}}'
+                          "QPushButton {\n"
+                          "width : 100px; \n"
+                          "    color: #333;\n"
+                          "    border: 2px solid white;\n"
+                          "    border-radius: 15px;\n"
+                          "    border-style: outset;\n"
+                          "    background: rgb(102,205,170);\n"
+                          "    padding: 5px;\n"
+                          "    }\n"
+                          "\n"
+                          "QPushButton:hover {\n"
+                          "    background: rgb(3, 205, 150);\n"
+                          "    }\n"
+                          "\n"
+                          "QPushButton:pressed {\n"
+                          "    border-style: inset;\n"
+                          "    background: rgb(70, 255, 150);\n"
+                          "    }\n"
+                          "\n"
+                          "QPushButton\n"
+                          "{\n"
+                          "   color:white;\n"
+                          "}")
 
     def set_dark_theme(self):
         color = "#b4babe"
-        app.setStyleSheet(f'QWidget {{background-color: {color};}}')
+        qdarktheme.setup_theme(custom_colors={"primary": "#66CDAA"})
 
     def restore_setting(self):
         color = "#f0f0f0"
-        app.setStyleSheet(f'QWidget {{background-color: {color};}}')
+        qdarktheme.setup_theme("light", custom_colors={"primary": "#66CDAA"})
 
     # Creating a new window
     def create_new_window(self, page):
@@ -180,6 +204,8 @@ class CrocodileGame(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    qdarktheme.setup_theme("light", custom_colors={"primary": "#66CDAA"})
+
     window = CrocodileGame()
     window.show()
 

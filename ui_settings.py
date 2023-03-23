@@ -38,7 +38,7 @@ class Ui_SettingsWindow(object):
         self.S.setStyleSheet(u"QLabel {  color : rgb(0, 170, 127); }")
         self.label = QLabel(SettingsWindow)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(70, 240, 171, 41))
+        self.label.setGeometry(QRect(60, 240, 171, 41))
         font2 = QFont()
         font2.setFamilies([u"Montserrat"])
         font2.setPointSize(28)
@@ -78,7 +78,7 @@ class Ui_SettingsWindow(object):
 "}")
         self.radioButtonSetGreen = QRadioButton(SettingsWindow)
         self.radioButtonSetGreen.setObjectName(u"radioButtonSetGreen")
-        self.radioButtonSetGreen.setGeometry(QRect(250, 240, 121, 41))
+        self.radioButtonSetGreen.setGeometry(QRect(240, 240, 121, 41))
         font4 = QFont()
         font4.setFamilies([u"Montserrat"])
         font4.setPointSize(24)
@@ -123,7 +123,7 @@ class Ui_SettingsWindow(object):
 "}")
         self.label_2 = QLabel(SettingsWindow)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(70, 330, 171, 41))
+        self.label_2.setGeometry(QRect(60, 330, 171, 41))
         font5 = QFont()
         font5.setFamilies([u"Montserrat"])
         font5.setPointSize(28)
@@ -135,7 +135,7 @@ class Ui_SettingsWindow(object):
         self.label_2.setMidLineWidth(1)
         self.radioButtonSetTimeMInuteThirty = QRadioButton(SettingsWindow)
         self.radioButtonSetTimeMInuteThirty.setObjectName(u"radioButtonSetTimeMInuteThirty")
-        self.radioButtonSetTimeMInuteThirty.setGeometry(QRect(290, 330, 81, 41))
+        self.radioButtonSetTimeMInuteThirty.setGeometry(QRect(285, 330, 81, 41))
         self.radioButtonSetTimeMInuteThirty.setFont(font4)
         self.radioButtonSetTimeMInuteThirty.setStyleSheet(u"QRadioButton::indicator::unchecked{ \n"
 "border: 1px solid; \n"
@@ -156,7 +156,7 @@ class Ui_SettingsWindow(object):
 "}")
         self.radioButtonSetTimeMInute = QRadioButton(SettingsWindow)
         self.radioButtonSetTimeMInute.setObjectName(u"radioButtonSetTimeMInute")
-        self.radioButtonSetTimeMInute.setGeometry(QRect(200, 330, 81, 41))
+        self.radioButtonSetTimeMInute.setGeometry(QRect(190, 330, 81, 41))
         self.radioButtonSetTimeMInute.setFont(font4)
         self.radioButtonSetTimeMInute.setStyleSheet(u"QRadioButton::indicator::unchecked{ \n"
 "border: 1px solid; \n"
@@ -177,21 +177,21 @@ class Ui_SettingsWindow(object):
 "}")
         self.frame_5 = QFrame(SettingsWindow)
         self.frame_5.setObjectName(u"frame_5")
-        self.frame_5.setGeometry(QRect(60, 320, 420, 61))
+        self.frame_5.setGeometry(QRect(50, 320, 440, 61))
         self.frame_5.setStyleSheet(u"    border: 2px solid  rgb(102,205,170);\n"
 "")
         self.frame_5.setFrameShape(QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QFrame.Raised)
         self.frame_7 = QFrame(SettingsWindow)
         self.frame_7.setObjectName(u"frame_7")
-        self.frame_7.setGeometry(QRect(60, 230, 420, 61))
+        self.frame_7.setGeometry(QRect(50, 230, 440, 61))
         self.frame_7.setStyleSheet(u"    border: 2px solid  rgb(102,205,170);\n"
 "")
         self.frame_7.setFrameShape(QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QFrame.Raised)
         self.radioButtonSetTimeTwoMinutes = QRadioButton(SettingsWindow)
         self.radioButtonSetTimeTwoMinutes.setObjectName(u"radioButtonSetTimeTwoMinutes")
-        self.radioButtonSetTimeTwoMinutes.setGeometry(QRect(380, 330, 91, 41))
+        self.radioButtonSetTimeTwoMinutes.setGeometry(QRect(375, 330, 91, 41))
         self.radioButtonSetTimeTwoMinutes.setFont(font4)
         self.radioButtonSetTimeTwoMinutes.setStyleSheet(u"QRadioButton::indicator::unchecked{ \n"
 "border: 1px solid; \n"
@@ -260,7 +260,7 @@ class Ui_SettingsWindow(object):
         self.label.setText(QCoreApplication.translate("SettingsWindow", u"Theme :", None))
         self.Back.setText(QCoreApplication.translate("SettingsWindow", u"Back", None))
         self.radioButtonSetGreen.setText(QCoreApplication.translate("SettingsWindow", u"Green", None))
-        self.radioButtonSetDark.setText(QCoreApplication.translate("SettingsWindow", u"Gray", None))
+        self.radioButtonSetDark.setText(QCoreApplication.translate("SettingsWindow", u"Dark", None))
         self.label_2.setText(QCoreApplication.translate("SettingsWindow", u"Time :", None))
         self.radioButtonSetTimeMInuteThirty.setText(QCoreApplication.translate("SettingsWindow", u"1:30", None))
         self.radioButtonSetTimeMInute.setText(QCoreApplication.translate("SettingsWindow", u"1:00", None))

@@ -45,7 +45,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>60</x>
      <y>240</y>
      <width>171</width>
      <height>41</height>
@@ -115,7 +115,7 @@ QPushButton
   <widget class="QRadioButton" name="radioButtonSetGreen">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>240</x>
      <y>240</y>
      <width>121</width>
      <height>41</height>
@@ -191,7 +191,7 @@ height: 7px;
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>60</x>
      <y>330</y>
      <width>171</width>
      <height>41</height>
@@ -219,7 +219,7 @@ height: 7px;
   <widget class="QRadioButton" name="radioButtonSetTimeMInuteThirty">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>285</x>
      <y>330</y>
      <width>81</width>
      <height>41</height>
@@ -257,7 +257,7 @@ height: 7px;
   <widget class="QRadioButton" name="radioButtonSetTimeMInute">
    <property name="geometry">
     <rect>
-     <x>200</x>
+     <x>190</x>
      <y>330</y>
      <width>81</width>
      <height>41</height>
@@ -295,9 +295,9 @@ height: 7px;
   <widget class="QFrame" name="frame_5">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>50</x>
      <y>320</y>
-     <width>420</width>
+     <width>440</width>
      <height>61</height>
     </rect>
    </property>
@@ -315,9 +315,9 @@ height: 7px;
   <widget class="QFrame" name="frame_7">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>50</x>
      <y>230</y>
-     <width>420</width>
+     <width>440</width>
      <height>61</height>
     </rect>
    </property>
@@ -335,7 +335,7 @@ height: 7px;
   <widget class="QRadioButton" name="radioButtonSetTimeTwoMinutes">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>375</x>
      <y>330</y>
      <width>91</width>
      <height>41</height>
