@@ -17,7 +17,6 @@ cursor = conn.cursor()
 word_count = []
 used_words = []
 
-
 # Counting words in the database (table)
 cursor.execute("SELECT * FROM allwords")
 all_words = cursor.fetchall()
@@ -80,6 +79,7 @@ class CrocodileGame(QMainWindow):
     def open_main_window(self):
         self.new_window.hide()
         used_words.clear()
+
         self.show()
 
     # Creating a new window
@@ -101,12 +101,14 @@ class CrocodileGame(QMainWindow):
 
         for row in record:
             random_word = row[1]
+            print(random_word)
             random_picture = QPixmap()
             random_picture.loadFromData(row[2])
 
             self.ui_window.RandomWord.setText(random_word)
             self.ui_window.RandomPicture.setPixmap(random_picture)
-            used_words.append(random_word)
+            if random_word not in used_words:
+                used_words.append(random_word)
 
         self.ui_window.NextWord.clicked.connect(self.get_next_word)
         self.ui_window.SetTime.clicked.connect(self.set_time)
@@ -126,10 +128,16 @@ class CrocodileGame(QMainWindow):
             random_picture = QPixmap()
             random_picture.loadFromData(row[2])
 
-            self.ui_window.RandomWord.setText(random_word)
-            self.ui_window.RandomPicture.setPixmap(random_picture)
-            if random_word not in used_words:
-                used_words.append(random_word)
+            if random_word in used_words:
+                print(f'Слово было -> {random_word}')
+            elif random_word not in used_words:
+                print(f'Слова не было -> {random_word}')
+
+                self.ui_window.RandomWord.setText(random_word)
+                self.ui_window.RandomPicture.setPixmap(random_picture)
+                if random_word not in used_words:
+                    used_words.append(random_word)
+                    print(used_words, word_count)
 
         # Check if the words are finished
         if len(used_words) == len(word_count):
@@ -144,6 +152,7 @@ class CrocodileGame(QMainWindow):
             QMessageBox.about(self, "Game over!", "<font>" "<p style='font-size: 26px'>"
                                                   "The database out of words :( </p>")
             self.ui_window.NextWord.setEnabled(False)
+            print(used_words, word_count)
 
     # Timer controllers
     def update_time(self):

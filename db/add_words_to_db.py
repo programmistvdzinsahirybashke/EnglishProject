@@ -32,4 +32,3 @@ def insert_blob(Word, picture):
 
 
 insert_blob("Sunflower", "pngtree-sunflower-landscape-yellow-flower-flower-png-image_3347616.png")
-
