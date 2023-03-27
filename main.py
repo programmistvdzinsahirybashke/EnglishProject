@@ -95,20 +95,19 @@ class CrocodileGame(QMainWindow):
     # Creating and opening game window
     def open_game_window(self):
         self.create_new_window(Ui_GameWindow)
-
+        print('=============')
         cursor.execute("SELECT * FROM allwords ORDER BY RANDOM() LIMIT 1")
         record = cursor.fetchall()
 
         for row in record:
             random_word = row[1]
-            print(random_word)
+            print(f'Слова не было -> {random_word}')
             random_picture = QPixmap()
             random_picture.loadFromData(row[2])
 
             self.ui_window.RandomWord.setText(random_word)
             self.ui_window.RandomPicture.setPixmap(random_picture)
-            if random_word not in used_words:
-                used_words.append(random_word)
+            used_words.append(random_word)
 
         self.ui_window.NextWord.clicked.connect(self.get_next_word)
         self.ui_window.SetTime.clicked.connect(self.set_time)
@@ -128,9 +127,10 @@ class CrocodileGame(QMainWindow):
             random_picture = QPixmap()
             random_picture.loadFromData(row[2])
 
-            if random_word in used_words:
+            if random_word in used_words and len(used_words) != len(word_count):
                 print(f'Слово было -> {random_word}')
-            elif random_word not in used_words:
+                self.ui_window.NextWord.click()
+            elif random_word not in used_words and len(used_words) != len(word_count):
                 print(f'Слова не было -> {random_word}')
 
                 self.ui_window.RandomWord.setText(random_word)
@@ -139,20 +139,20 @@ class CrocodileGame(QMainWindow):
                     used_words.append(random_word)
                     print(used_words, word_count)
 
-        # Check if the words are finished
-        if len(used_words) == len(word_count):
-            for row in record:
-                random_word = row[1]
-                random_picture = QPixmap()
-                random_picture.loadFromData(row[2])
+                # Check if the words are finished
+                if len(used_words) == len(word_count):
+                    for row in record:
+                        random_word = row[1]
+                        random_picture = QPixmap()
+                        random_picture.loadFromData(row[2])
 
-                self.ui_window.RandomWord.setText(random_word)
-                self.ui_window.RandomPicture.setPixmap(random_picture)
+                        self.ui_window.RandomWord.setText(random_word)
+                        self.ui_window.RandomPicture.setPixmap(random_picture)
 
-            QMessageBox.about(self, "Game over!", "<font>" "<p style='font-size: 26px'>"
-                                                  "The database out of words :( </p>")
-            self.ui_window.NextWord.setEnabled(False)
-            print(used_words, word_count)
+                    QMessageBox.about(self, "Game over!", "<font>" "<p style='font-size: 26px'>"
+                                                          "The database out of words :( </p>")
+                    self.ui_window.NextWord.setEnabled(False)
+                    print(used_words, word_count)
 
     # Timer controllers
     def update_time(self):
