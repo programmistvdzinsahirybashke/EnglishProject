@@ -16,6 +16,7 @@ cursor = conn.cursor()
 
 word_count = []
 used_words = []
+time = [300]
 
 # Counting words in the database (table)
 cursor.execute("SELECT * FROM allwords")
@@ -60,6 +61,21 @@ def set_green_theme():
 
 def restore_setting():
     qdarktheme.setup_theme("light", custom_colors={"primary": "#66CDAA"})
+
+
+def set_minute():
+    time.clear()
+    time.append(600)
+
+
+def set_minute_thirty():
+    time.clear()
+    time.append(900)
+
+
+def set_two_minutes():
+    time.clear()
+    time.append(1200)
 
 
 class CrocodileGame(QMainWindow):
@@ -113,14 +129,15 @@ class CrocodileGame(QMainWindow):
         self.ui_window.StartTimer.clicked.connect(self.start_timer)
 
         self.ui_window.start = False
-        self.ui_window.count = 30
+        self.ui_window.count = time[0]
         self.ui_window.Time.setText(str(self.ui_window.count / 10) + ' s')
 
     # Retreive a random word from the database and check if the words are finished
     def get_next_word(self):
+        self.ui_window.count = time[0]
+        self.ui_window.Time.setText(str(self.ui_window.count / 10) + ' s')
         cursor.execute("SELECT * FROM allwords ORDER BY RANDOM() LIMIT 1")
         record = cursor.fetchall()
-
         for row in record:
             random_word = row[1]
             random_picture = QPixmap()
@@ -207,6 +224,9 @@ class CrocodileGame(QMainWindow):
         self.ui_window.radioButtonSetGreen.toggled.connect(set_green_theme)
         self.ui_window.radioButtonSetDark.toggled.connect(set_dark_theme)
         self.ui_window.RestoreSettings.clicked.connect(restore_setting)
+        self.ui_window.radioButtonSetTimeMInute.toggled.connect(set_minute)
+        self.ui_window.radioButtonSetTimeMInuteThirty.toggled.connect(set_minute_thirty)
+        self.ui_window.radioButtonSetTimeTwoMinutes.toggled.connect(set_two_minutes)
 
     def disable_buttons(self):
         self.ui_window.NextWord.setEnabled(False)
