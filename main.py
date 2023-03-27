@@ -61,7 +61,8 @@ def set_green_theme():
 
 def restore_setting():
     qdarktheme.setup_theme("light", custom_colors={"primary": "#66CDAA"})
-
+    time.clear()
+    time.append(300)
 
 def set_minute():
     time.clear()
@@ -202,6 +203,8 @@ class CrocodileGame(QMainWindow):
         if done:
             # changing the value of count
             self.ui_window.count = second * 10
+            time.clear()
+            time.append(second * 10)
             # setting text to the label
             self.ui_window.Time.setText(str(second) + ' s')
 
