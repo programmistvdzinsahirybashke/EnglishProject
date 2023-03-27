@@ -101,7 +101,6 @@ class CrocodileGame(QMainWindow):
 
         for row in record:
             random_word = row[1]
-            print(f'Слова не было -> {random_word}')
             random_picture = QPixmap()
             random_picture.loadFromData(row[2])
 
@@ -128,11 +127,8 @@ class CrocodileGame(QMainWindow):
             random_picture.loadFromData(row[2])
 
             if random_word in used_words and len(used_words) != len(word_count):
-                print(f'Слово было -> {random_word}')
                 self.ui_window.NextWord.click()
             elif random_word not in used_words and len(used_words) != len(word_count):
-                print(f'Слова не было -> {random_word}')
-
                 self.ui_window.RandomWord.setText(random_word)
                 self.ui_window.RandomPicture.setPixmap(random_picture)
                 if random_word not in used_words:
