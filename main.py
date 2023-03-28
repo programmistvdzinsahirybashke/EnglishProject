@@ -17,7 +17,7 @@ cursor = conn.cursor()
 word_count = []
 used_words = []
 time = [300]
-
+score = []
 # Counting words in the database (table)
 cursor.execute("SELECT * FROM allwords")
 all_words = cursor.fetchall()
@@ -112,6 +112,7 @@ class CrocodileGame(QMainWindow):
     # Creating and opening game window
     def open_game_window(self):
         self.create_new_window(Ui_GameWindow)
+        score.clear()
         print('=============')
         cursor.execute("SELECT * FROM allwords ORDER BY RANDOM() LIMIT 1")
         record = cursor.fetchall()
@@ -183,15 +184,31 @@ class CrocodileGame(QMainWindow):
                 # making flag false
                 self.ui_window.start = False
                 self.enable_buttons()
-                # setting text to the label
-                QMessageBox.about(self, "Time Out!", "<font>" "<p style='font-size: 26px'>"
-                                                     "Time Out!</p>")
+                # Creating dialog window and asking if players guessed the word
+                dlg = QMessageBox(self)
+                dlg.setStyleSheet("QLabel {font-size: 18px; }")
+                dlg.setWindowTitle("Time out!")
+                dlg.setText("The word is guessed?")
+                dlg.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+                button = dlg.exec()
+                if button == QMessageBox.Yes:
+                    score.append(1)
+                    self.ui_window.label.setText("Score: " + str(sum(score)))
+
             elif self.ui_window.count == 0 and len(used_words) == len(word_count):
                 self.ui_window.start = False
                 self.ui_window.StartTimer.setEnabled(True)
                 self.ui_window.SetTime.setEnabled(True)
-                QMessageBox.about(self, "Time Out!", "<font>" "<p style='font-size: 26px'>"
-                                                     "Time Out!</p>")
+                dlg = QMessageBox(self)
+                dlg.setStyleSheet("QLabel {font-size: 18px; }")
+                dlg.setWindowTitle("Time out!")
+                dlg.setText("The word is guessed?")
+                dlg.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+
+                button = dlg.exec()
+                if button == QMessageBox.Yes:
+                    score.append(1)
+                    self.ui_window.label.setText("Score: " + str(sum(score)))
 
     def set_time(self):
         # making flag false

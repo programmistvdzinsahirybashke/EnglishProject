@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'ui_game.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.2
+## Created by: Qt User Interface Compiler version 6.4.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -22,17 +22,17 @@ class Ui_GameWindow(object):
     def setupUi(self, GameWindow):
         if not GameWindow.objectName():
             GameWindow.setObjectName(u"GameWindow")
-        GameWindow.resize(540, 600)
+        GameWindow.resize(540, 620)
         self.RandomPicture = QLabel(GameWindow)
         self.RandomPicture.setObjectName(u"RandomPicture")
-        self.RandomPicture.setGeometry(QRect(40, 20, 451, 311))
+        self.RandomPicture.setGeometry(QRect(40, 60, 451, 311))
         self.RandomPicture.setAutoFillBackground(False)
         self.RandomPicture.setStyleSheet(u"border: 2px solid rgb(102,205,170);")
         self.RandomPicture.setScaledContents(True)
         self.RandomPicture.setWordWrap(True)
         self.RandomWord = QLabel(GameWindow)
         self.RandomWord.setObjectName(u"RandomWord")
-        self.RandomWord.setGeometry(QRect(40, 350, 451, 71))
+        self.RandomWord.setGeometry(QRect(40, 390, 451, 71))
         font = QFont()
         font.setFamilies([u"Montserrat Medium"])
         font.setPointSize(40)
@@ -47,7 +47,7 @@ class Ui_GameWindow(object):
         self.RandomWord.setAlignment(Qt.AlignCenter)
         self.Back = QPushButton(GameWindow)
         self.Back.setObjectName(u"Back")
-        self.Back.setGeometry(QRect(40, 510, 220, 60))
+        self.Back.setGeometry(QRect(40, 550, 220, 60))
         font1 = QFont()
         font1.setFamilies([u"Montserrat Medium"])
         font1.setPointSize(20)
@@ -76,7 +76,7 @@ class Ui_GameWindow(object):
 "}")
         self.NextWord = QPushButton(GameWindow)
         self.NextWord.setObjectName(u"NextWord")
-        self.NextWord.setGeometry(QRect(271, 510, 220, 60))
+        self.NextWord.setGeometry(QRect(271, 550, 220, 60))
         self.NextWord.setFont(font1)
         self.NextWord.setStyleSheet(u"QPushButton {\n"
 "    color: #333;\n"
@@ -102,7 +102,7 @@ class Ui_GameWindow(object):
 "}")
         self.StartTimer = QPushButton(GameWindow)
         self.StartTimer.setObjectName(u"StartTimer")
-        self.StartTimer.setGeometry(QRect(271, 440, 85, 60))
+        self.StartTimer.setGeometry(QRect(271, 480, 85, 60))
         font2 = QFont()
         font2.setFamilies([u"Montserrat Medium"])
         font2.setPointSize(18)
@@ -131,7 +131,7 @@ class Ui_GameWindow(object):
 "}")
         self.Time = QLabel(GameWindow)
         self.Time.setObjectName(u"Time")
-        self.Time.setGeometry(QRect(40, 440, 220, 61))
+        self.Time.setGeometry(QRect(40, 480, 220, 61))
         font3 = QFont()
         font3.setFamilies([u"Montserrat"])
         font3.setPointSize(20)
@@ -147,7 +147,7 @@ class Ui_GameWindow(object):
         self.Time.setAlignment(Qt.AlignCenter)
         self.SetTime = QPushButton(GameWindow)
         self.SetTime.setObjectName(u"SetTime")
-        self.SetTime.setGeometry(QRect(360, 440, 131, 60))
+        self.SetTime.setGeometry(QRect(360, 480, 131, 60))
         self.SetTime.setFont(font2)
         self.SetTime.setStyleSheet(u"QPushButton {\n"
 "    color: #333;\n"
@@ -171,6 +171,16 @@ class Ui_GameWindow(object):
 "{\n"
 "   color:white;\n"
 "}")
+        self.label = QLabel(GameWindow)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(40, 10, 171, 41))
+        self.label.setFont(font3)
+        self.label.setStyleSheet(u"\n"
+"\n"
+"\n"
+"QLabel {  color : rgb(255, 255, 255)};\n"
+"border: 4px solid #20B2AA;\n"
+"border-radius: 20px; background: rgb(85, 170, 255)rgba(102, 205, 170, 190); ")
 
         self.retranslateUi(GameWindow)
 
@@ -186,5 +196,6 @@ class Ui_GameWindow(object):
         self.StartTimer.setText(QCoreApplication.translate("GameWindow", u"Start", None))
         self.Time.setText(QCoreApplication.translate("GameWindow", u"Your time", None))
         self.SetTime.setText(QCoreApplication.translate("GameWindow", u"Set time", None))
+        self.label.setText(QCoreApplication.translate("GameWindow", u"Score: 0", None))
     # retranslateUi
 
