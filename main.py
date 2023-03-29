@@ -216,8 +216,14 @@ class CrocodileGame(QMainWindow):
         # getting seconds and flag from user
         second, done = QInputDialog.getInt(self, 'Setting time', 'Enter Seconds:')
 
-        # if flag is true
-        if done:
+        while second <= 0 and done:
+            second, done = QInputDialog.getInt(self, 'Setting time', 'Enter Seconds > 0:')
+            self.ui_window.count = second * 10
+            time.clear()
+            time.append(second * 10)
+            # setting text to the label
+            self.ui_window.Time.setText(str(second) + ' s')
+        else:
             # changing the value of count
             self.ui_window.count = second * 10
             time.clear()
