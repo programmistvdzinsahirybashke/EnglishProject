@@ -217,7 +217,7 @@ class CrocodileGame(QMainWindow):
         second, done = QInputDialog.getInt(self, 'Setting time', 'Enter Seconds:')
 
         while second <= 0 and done:
-            second, done = QInputDialog.getInt(self, 'Setting time', 'Enter Seconds > 0:')
+            second, done = QInputDialog.getInt(self, 'Setting time', 'Time must be more then 0:')
             self.ui_window.count = second * 10
             time.clear()
             time.append(second * 10)
