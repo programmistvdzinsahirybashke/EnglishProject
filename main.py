@@ -97,6 +97,7 @@ class CrocodileGame(QMainWindow):
     # Creating and opening start window
     def open_main_window(self):
         self.new_window.hide()
+        self.ui_window.start = False
         used_words.clear()
         self.show()
 
@@ -195,7 +196,8 @@ class CrocodileGame(QMainWindow):
                     self.ui_window.NextWord.click()
                 elif button == QMessageBox.No:
                     self.ui_window.NextWord.click()
-
+            elif self.ui_window.count != 0 and len(used_words) == len(word_count):
+                self.ui_window.StopTimer.setEnabled(False)
             elif self.ui_window.count == 0 and len(used_words) == len(word_count):
                 self.ui_window.start = False
                 dlg = QMessageBox(self)
