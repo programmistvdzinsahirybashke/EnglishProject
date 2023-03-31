@@ -18,6 +18,7 @@ word_count = []
 used_words = []
 time = [300]
 score = []
+
 # Counting words in the database (table)
 cursor.execute("SELECT * FROM allwords")
 all_words = cursor.fetchall()
@@ -64,6 +65,7 @@ def restore_setting():
     time.clear()
     time.append(300)
 
+
 def set_minute():
     time.clear()
     time.append(600)
@@ -96,7 +98,6 @@ class CrocodileGame(QMainWindow):
     def open_main_window(self):
         self.new_window.hide()
         used_words.clear()
-
         self.show()
 
     # Creating a new window
@@ -111,13 +112,15 @@ class CrocodileGame(QMainWindow):
 
     # Creating and opening game window
     def open_game_window(self):
-        self.create_new_window(Ui_GameWindow)
         score.clear()
+        self.create_new_window(Ui_GameWindow)
+        self.ui_window.label.setText("Score: " + '0')
         print('=============')
         cursor.execute("SELECT * FROM allwords ORDER BY RANDOM() LIMIT 1")
         record = cursor.fetchall()
 
         for row in record:
+
             random_word = row[1]
             random_picture = QPixmap()
             random_picture.loadFromData(row[2])
@@ -129,17 +132,24 @@ class CrocodileGame(QMainWindow):
         self.ui_window.NextWord.clicked.connect(self.get_next_word)
         self.ui_window.SetTime.clicked.connect(self.set_time)
         self.ui_window.StartTimer.clicked.connect(self.start_timer)
+        self.ui_window.StopTimer.clicked.connect(self.stop_timer)
+        self.ui_window.ResetTimer.clicked.connect(self.reset_timer)
 
         self.ui_window.start = False
+        self.ui_window.StopTimer.setEnabled(False)
+        self.ui_window.ResetTimer.setEnabled(False)
         self.ui_window.count = time[0]
         self.ui_window.Time.setText(str(self.ui_window.count / 10) + ' s')
 
     # Retreive a random word from the database and check if the words are finished
     def get_next_word(self):
+        self.ui_window.StopTimer.setEnabled(False)
+        self.ui_window.ResetTimer.setEnabled(False)
         self.ui_window.count = time[0]
         self.ui_window.Time.setText(str(self.ui_window.count / 10) + ' s')
         cursor.execute("SELECT * FROM allwords ORDER BY RANDOM() LIMIT 1")
         record = cursor.fetchall()
+
         for row in record:
             random_word = row[1]
             random_picture = QPixmap()
@@ -154,26 +164,13 @@ class CrocodileGame(QMainWindow):
                     used_words.append(random_word)
                     print(used_words, word_count)
 
-                # Check if the words are finished
-                if len(used_words) == len(word_count):
-                    for row in record:
-                        random_word = row[1]
-                        random_picture = QPixmap()
-                        random_picture.loadFromData(row[2])
-
-                        self.ui_window.RandomWord.setText(random_word)
-                        self.ui_window.RandomPicture.setPixmap(random_picture)
-
-                    QMessageBox.about(self, "Game over!", "<font>" "<p style='font-size: 26px'>"
-                                                          "The database out of words :( </p>")
-                    self.ui_window.NextWord.setEnabled(False)
-                    print(used_words, word_count)
-
     # Timer controllers
     def update_time(self):
         # checking if flag is true
         if self.ui_window.start:
             # incrementing the counter
+            self.ui_window.StopTimer.setEnabled(True)
+            self.ui_window.ResetTimer.setEnabled(True)
             self.ui_window.count -= 1
             # getting text from count
             text = str(self.ui_window.count / 10) + " s"
@@ -183,6 +180,8 @@ class CrocodileGame(QMainWindow):
             if self.ui_window.count == 0 and len(used_words) != len(word_count):
                 # making flag false
                 self.ui_window.start = False
+                self.ui_window.StopTimer.setEnabled(False)
+                self.ui_window.ResetTimer.setEnabled(False)
                 self.enable_buttons()
                 # Creating dialog window and asking if players guessed the word
                 dlg = QMessageBox(self)
@@ -194,11 +193,12 @@ class CrocodileGame(QMainWindow):
                 if button == QMessageBox.Yes:
                     score.append(1)
                     self.ui_window.label.setText("Score: " + str(sum(score)))
+                    self.ui_window.NextWord.click()
+                elif button == QMessageBox.No:
+                    self.ui_window.NextWord.click()
 
             elif self.ui_window.count == 0 and len(used_words) == len(word_count):
                 self.ui_window.start = False
-                self.ui_window.StartTimer.setEnabled(True)
-                self.ui_window.SetTime.setEnabled(True)
                 dlg = QMessageBox(self)
                 dlg.setStyleSheet("QLabel {font-size: 18px; }")
                 dlg.setWindowTitle("Time out!")
@@ -209,6 +209,15 @@ class CrocodileGame(QMainWindow):
                 if button == QMessageBox.Yes:
                     score.append(1)
                     self.ui_window.label.setText("Score: " + str(sum(score)))
+
+                QMessageBox.about(self, "Game over!", "<font>" "<p style='font-size: 26px'>"
+                                                      "The database out of words :( </p>")
+                print(used_words, word_count)
+                self.ui_window.NextWord.setEnabled(False)
+                self.ui_window.SetTime.setEnabled(False)
+                self.ui_window.StartTimer.setEnabled(False)
+                self.ui_window.StopTimer.setEnabled(False)
+                self.ui_window.ResetTimer.setEnabled(False)
 
     def set_time(self):
         # making flag false
@@ -240,6 +249,47 @@ class CrocodileGame(QMainWindow):
             self.disable_buttons()
         elif self.ui_window.count == 0:
             self.ui_window.start = False
+
+    def stop_timer(self):
+        self.ui_window.start = False
+        dlg = QMessageBox(self)
+        dlg.setStyleSheet("QLabel {font-size: 18px; }")
+        dlg.setWindowTitle("Stop timer")
+        dlg.setText("The word is guessed?")
+        dlg.setStandardButtons(
+            QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No | QMessageBox.StandardButton.Cancel)
+        button = dlg.exec()
+
+        if button == QMessageBox.Yes:
+            score.append(1)
+            self.ui_window.label.setText("Score: " + str(sum(score)))
+            self.enable_buttons()
+            self.ui_window.NextWord.click()
+        elif button == QMessageBox.No:
+            self.enable_buttons()
+            self.ui_window.NextWord.click()
+        elif button == QMessageBox.Cancel:
+            self.ui_window.start = True
+
+    def reset_timer(self):
+        self.ui_window.start = False
+        dlg = QMessageBox(self)
+        dlg.setStyleSheet("QLabel {font-size: 18px; }")
+        dlg.setWindowTitle("Reset timer")
+        dlg.setText("You want to reset timer?")
+        dlg.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+        button = dlg.exec()
+
+        if button == QMessageBox.Yes:
+            self.ui_window.count = time[0]
+            self.ui_window.Time.setText(str(self.ui_window.count / 10) + ' s')
+            self.ui_window.StopTimer.setEnabled(False)
+            self.ui_window.StartTimer.setEnabled(True)
+            self.ui_window.SetTime.setEnabled(True)
+            self.ui_window.NextWord.setEnabled(True)
+            self.ui_window.ResetTimer.setEnabled(False)
+        elif button == QMessageBox.No:
+            self.ui_window.start = True
 
     # Creating and opening settings window
     def open_settings_window(self):
