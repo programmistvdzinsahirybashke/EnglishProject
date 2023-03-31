@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>540</width>
-    <height>620</height>
+    <width>549</width>
+    <height>698</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,7 +75,7 @@ border-radius: 35px; background: rgb(85, 170, 255)rgba(102, 205, 170, 190); </st
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>550</y>
+     <y>620</y>
      <width>220</width>
      <height>60</height>
     </rect>
@@ -118,7 +118,7 @@ QPushButton
    <property name="geometry">
     <rect>
      <x>271</x>
-     <y>550</y>
+     <y>620</y>
      <width>220</width>
      <height>60</height>
     </rect>
@@ -300,6 +300,92 @@ border-radius: 20px; background: rgb(85, 170, 255)rgba(102, 205, 170, 190); </st
    </property>
    <property name="text">
     <string>Score: </string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="StopTimer">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>550</y>
+     <width>221</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Montserrat Medium</family>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    color: #333;
+    border: 2px solid white;
+    border-radius: 30px;
+    border-style: outset;
+    background: rgb(102,205,170);
+    padding: 5px;
+    }
+
+QPushButton:hover {
+    background: rgb(3, 205, 150);
+    }
+
+QPushButton:pressed {
+    border-style: inset;
+    background: rgb(70, 255, 150);
+    }
+
+QPushButton
+{
+   color:white;
+}</string>
+   </property>
+   <property name="text">
+    <string>Word guessed</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ResetTimer">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>550</y>
+     <width>220</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Montserrat Medium</family>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    color: #333;
+    border: 2px solid white;
+    border-radius: 30px;
+    border-style: outset;
+    background: rgb(102,205,170);
+    padding: 5px;
+    }
+
+QPushButton:hover {
+    background: rgb(3, 205, 150);
+    }
+
+QPushButton:pressed {
+    border-style: inset;
+    background: rgb(70, 255, 150);
+    }
+
+QPushButton
+{
+   color:white;
+}</string>
+   </property>
+   <property name="text">
+    <string>Reset</string>
    </property>
   </widget>
  </widget>
