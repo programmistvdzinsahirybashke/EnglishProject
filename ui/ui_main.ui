@@ -22,9 +22,9 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>30</x>
       <y>30</y>
-      <width>431</width>
+      <width>491</width>
       <height>81</height>
      </rect>
     </property>
@@ -445,7 +445,7 @@ color: #FFFFFE;
      <string/>
     </property>
     <property name="scaledContents">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
    </widget>
    <zorder>frame</zorder>

@@ -28,44 +28,6 @@ for row in all_words:
 print(f'В базе данных {len(word_count)} слов')
 
 
-def set_dark_theme():
-    qdarktheme.setup_theme(custom_colors={"primary": "#66CDAA"})
-
-
-def set_green_theme():
-    color = "#9FE2BF"
-    app.setStyleSheet(f'QWidget {{background-color: {color};}}'
-                      "QPushButton {\n"
-                      "width : 100px; \n"
-                      "    color: #333;\n"
-                      "    border: 2px solid white;\n"
-                      "    border-radius: 15px;\n"
-                      "    border-style: outset;\n"
-                      "    background: rgb(102,205,170);\n"
-                      "    padding: 5px;\n"
-                      "    }\n"
-                      "\n"
-                      "QPushButton:hover {\n"
-                      "    background: rgb(3, 205, 150);\n"
-                      "    }\n"
-                      "\n"
-                      "QPushButton:pressed {\n"
-                      "    border-style: inset;\n"
-                      "    background: rgb(70, 255, 150);\n"
-                      "    }\n"
-                      "\n"
-                      "QPushButton\n"
-                      "{\n"
-                      "   color:white;\n"
-                      "}")
-
-
-def restore_setting():
-    qdarktheme.setup_theme("light", custom_colors={"primary": "#66CDAA"})
-    time.clear()
-    time.append(300)
-
-
 def set_minute():
     time.clear()
     time.append(600)
@@ -91,6 +53,7 @@ class CrocodileGame(QMainWindow):
         self.setWindowIcon(QIcon('media/top_logo.png'))
         self.main_window.StartButton.clicked.connect(self.open_game_window)
         self.main_window.SettingsButton.clicked.connect(self.open_settings_window)
+        self.main_window.ExitButton.clicked.connect(self.exit)
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_time)
 
@@ -288,12 +251,53 @@ class CrocodileGame(QMainWindow):
         self.ui_window.start = None
 
         self.ui_window.Back.clicked.connect(self.open_main_window)
-        self.ui_window.radioButtonSetGreen.toggled.connect(set_green_theme)
-        self.ui_window.radioButtonSetDark.toggled.connect(set_dark_theme)
-        self.ui_window.RestoreSettings.clicked.connect(restore_setting)
+        self.ui_window.radioButtonSetGreen.toggled.connect(self.set_green_theme)
+        self.ui_window.radioButtonSetDark.toggled.connect(self.set_dark_theme)
+        self.ui_window.RestoreSettings.clicked.connect(self.restore_setting)
         self.ui_window.radioButtonSetTimeMInute.toggled.connect(set_minute)
         self.ui_window.radioButtonSetTimeMInuteThirty.toggled.connect(set_minute_thirty)
         self.ui_window.radioButtonSetTimeTwoMinutes.toggled.connect(set_two_minutes)
+
+    def set_dark_theme(self):
+        self.main_window.label.setGeometry(QRect(30, 30, 491, 81))
+        self.main_window.label_2.setGeometry(QRect(30, 80, 480, 340))
+        qdarktheme.setup_theme(custom_colors={"primary": "#66CDAA"})
+
+    def restore_setting(self):
+        self.main_window.label.setGeometry(QRect(30, 30, 491, 81))
+        self.main_window.label_2.setGeometry(QRect(30, 80, 480, 340))
+        qdarktheme.setup_theme("light", custom_colors={"primary": "#66CDAA"})
+        time.clear()
+        time.append(300)
+
+    def set_green_theme(self):
+        self.main_window.label_2.setGeometry(QRect(20, 120, 500, 289))
+        self.main_window.label.setGeometry(QRect(60, 30, 491, 81))
+        color = "#1e997c"
+        app.setStyleSheet(f'QWidget {{background-color: {color};}}'
+                          "QPushButton {\n"
+                          "width : 100px; \n"
+                          "    color: #333;\n"
+                          "    border: 2px solid white;\n"
+                          "    border-radius: 15px;\n"
+                          "    border-style: outset;\n"
+                          "    background: rgb(102,205,170);\n"
+                          "    padding: 5px;\n"
+                          "    }\n"
+                          "\n"
+                          "QPushButton:hover {\n"
+                          "    background: rgb(3, 205, 150);\n"
+                          "    }\n"
+                          "\n"
+                          "QPushButton:pressed {\n"
+                          "    border-style: inset;\n"
+                          "    background: rgb(70, 255, 150);\n"
+                          "    }\n"
+                          "\n"
+                          "QPushButton\n"
+                          "{\n"
+                          "   color:white;\n"
+                          "}")
 
     def disable_buttons(self):
         self.ui_window.NextWord.setEnabled(False)
@@ -311,6 +315,19 @@ class CrocodileGame(QMainWindow):
         self.ui_window.StartTimer.setEnabled(False)
         self.ui_window.StopTimer.setEnabled(False)
         self.ui_window.ResetTimer.setEnabled(False)
+
+    def exit(self):
+        dlg = QMessageBox(self)
+        dlg.setStyleSheet("QLabel {font-size: 14px; }")
+        dlg.setWindowTitle("Exit")
+        dlg.setText("Are you sure you want to exit?")
+        dlg.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+
+        button = dlg.exec()
+        if button == QMessageBox.Yes:
+            sys.exit(app.exec())
+        else:
+            pass
 
 
 if __name__ == "__main__":
