@@ -25,22 +25,7 @@ all_words = cursor.fetchall()
 for row in all_words:
     word_count.append(row[0])
 
-print(f'В базе данных {len(word_count)} слов')
-
-
-def set_minute():
-    time.clear()
-    time.append(600)
-
-
-def set_minute_thirty():
-    time.clear()
-    time.append(900)
-
-
-def set_two_minutes():
-    time.clear()
-    time.append(1200)
+print(f'There are {len(word_count)} words in the database')
 
 
 class CrocodileGame(QMainWindow):
@@ -83,7 +68,7 @@ class CrocodileGame(QMainWindow):
         cursor.execute("SELECT * FROM allwords ORDER BY RANDOM() LIMIT 1")
         record = cursor.fetchall()
         for row in record:
-            random_word = row[1]
+            random_word = "Your word: " + row[1]
             random_picture = QPixmap()
             random_picture.loadFromData(row[2])
 
@@ -101,19 +86,19 @@ class CrocodileGame(QMainWindow):
         self.ui_window.StopTimer.setEnabled(False)
         self.ui_window.ResetTimer.setEnabled(False)
         self.ui_window.count = time[0]
-        self.ui_window.Time.setText(str(self.ui_window.count / 10) + ' s')
+        self.ui_window.Time.setText("Time: " + str(self.ui_window.count / 10) + ' s')
 
     # Retreive a random word from the database and check if the words are finished
     def get_next_word(self):
         self.ui_window.StopTimer.setEnabled(False)
         self.ui_window.ResetTimer.setEnabled(False)
         self.ui_window.count = time[0]
-        self.ui_window.Time.setText(str(self.ui_window.count / 10) + ' s')
+        self.ui_window.Time.setText("Time: " + str(self.ui_window.count / 10) + ' s')
 
         cursor.execute("SELECT * FROM allwords ORDER BY RANDOM() LIMIT 1")
         record = cursor.fetchall()
         for row in record:
-            random_word = row[1]
+            random_word = "Your word: " + row[1]
             random_picture = QPixmap()
             random_picture.loadFromData(row[2])
 
@@ -134,7 +119,7 @@ class CrocodileGame(QMainWindow):
             self.ui_window.ResetTimer.setEnabled(True)
             self.ui_window.count -= 1
             # getting text from count
-            text = str(self.ui_window.count / 10) + " s"
+            text = "Time: " + str(self.ui_window.count / 10) + " s"
             # showing text
             self.ui_window.Time.setText(text)
             # timer is completed
@@ -159,6 +144,7 @@ class CrocodileGame(QMainWindow):
                     self.ui_window.NextWord.click()
                 elif button == QMessageBox.No:
                     self.ui_window.NextWord.click()
+
             elif self.ui_window.count != 0 and len(used_words) == len(word_count):
                 self.ui_window.StopTimer.setEnabled(False)
             elif self.ui_window.count == 0 and len(used_words) == len(word_count):
@@ -193,7 +179,7 @@ class CrocodileGame(QMainWindow):
             time.clear()
             time.append(second * 10)
             # setting text to the label
-            self.ui_window.Time.setText(str(second) + ' s')
+            self.ui_window.Time.setText("Time: " + str(second) + ' s')
 
     def start_timer(self):
         # making flag true
@@ -211,7 +197,8 @@ class CrocodileGame(QMainWindow):
         dlg.setStyleSheet("QLabel {font-size: 18px; }")
         dlg.setWindowTitle("Stop timer")
         dlg.setText("The word is guessed?")
-        dlg.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No | QMessageBox.StandardButton.Cancel)
+        dlg.setStandardButtons(QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No |
+                               QMessageBox.StandardButton.Cancel)
 
         button = dlg.exec()
         if button == QMessageBox.Yes:
@@ -236,7 +223,7 @@ class CrocodileGame(QMainWindow):
         button = dlg.exec()
         if button == QMessageBox.Yes:
             self.ui_window.count = time[0]
-            self.ui_window.Time.setText(str(self.ui_window.count / 10) + ' s')
+            self.ui_window.Time.setText("Time: " + str(self.ui_window.count / 10) + ' s')
             self.ui_window.StopTimer.setEnabled(False)
             self.ui_window.StartTimer.setEnabled(True)
             self.ui_window.SetTime.setEnabled(True)
@@ -254,9 +241,9 @@ class CrocodileGame(QMainWindow):
         self.ui_window.radioButtonSetGreen.toggled.connect(self.set_green_theme)
         self.ui_window.radioButtonSetDark.toggled.connect(self.set_dark_theme)
         self.ui_window.RestoreSettings.clicked.connect(self.restore_setting)
-        self.ui_window.radioButtonSetTimeMInute.toggled.connect(set_minute)
-        self.ui_window.radioButtonSetTimeMInuteThirty.toggled.connect(set_minute_thirty)
-        self.ui_window.radioButtonSetTimeTwoMinutes.toggled.connect(set_two_minutes)
+        self.ui_window.radioButtonSetTimeMInute.toggled.connect(self.set_minute)
+        self.ui_window.radioButtonSetTimeMInuteThirty.toggled.connect(self.set_minute_thirty)
+        self.ui_window.radioButtonSetTimeTwoMinutes.toggled.connect(self.set_two_minutes)
 
     def set_dark_theme(self):
         self.main_window.label.setGeometry(QRect(30, 30, 491, 81))
@@ -274,7 +261,7 @@ class CrocodileGame(QMainWindow):
         self.main_window.label_2.setGeometry(QRect(20, 120, 500, 289))
         self.main_window.label.setGeometry(QRect(60, 30, 491, 81))
         color = "#1e997c"
-        app.setStyleSheet(f'QWidget {{background-color: {color};}}'
+        app.setStyleSheet(f'QWidget {{background-color: {color}; color: white;}}'
                           "QPushButton {\n"
                           "width : 100px; \n"
                           "    color: #333;\n"
@@ -298,6 +285,18 @@ class CrocodileGame(QMainWindow):
                           "{\n"
                           "   color:white;\n"
                           "}")
+
+    def set_minute(self):
+        time.clear()
+        time.append(600)
+
+    def set_minute_thirty(self):
+        time.clear()
+        time.append(900)
+
+    def set_two_minutes(self):
+        time.clear()
+        time.append(1200)
 
     def disable_buttons(self):
         self.ui_window.NextWord.setEnabled(False)
