@@ -7,8 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>540</width>
-    <height>600</height>
+    <height>516</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>540</width>
+    <height>516</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>540</width>
+    <height>516</height>
+   </size>
   </property>
   <property name="font">
    <font>
@@ -18,25 +30,41 @@
   <property name="windowTitle">
    <string>Settings</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
   <widget class="QLabel" name="S">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>90</y>
-     <width>271</width>
-     <height>81</height>
+     <x>50</x>
+     <y>10</y>
+     <width>451</width>
+     <height>121</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Montserrat</family>
-     <pointsize>44</pointsize>
+     <pointsize>-1</pointsize>
      <italic>false</italic>
      <bold>true</bold>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel {  color : rgb(0, 170, 127); }</string>
+    <string notr="true">QLabel {  font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 90px;
+line-height: 150%;
+/* or 135px */
+
+text-align: center;
+letter-spacing: -0.022em;
+
+color: #2CB67D; }</string>
    </property>
    <property name="text">
     <string>Settings</string>
@@ -46,7 +74,7 @@
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>240</y>
+     <y>160</y>
      <width>171</width>
      <height>41</height>
     </rect>
@@ -69,54 +97,11 @@
     <string>Theme :</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="Back">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>440</y>
-     <width>210</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Montserrat Medium</family>
-     <pointsize>16</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton {
-    color: #333;
-    border: 2px solid white;
-    border-radius: 30px;
-    border-style: outset;
-    background: rgb(102,205,170);
-    padding: 5px;
-    }
-
-QPushButton:hover {
-    background: rgb(3, 205, 150);
-    }
-
-QPushButton:pressed {
-    border-style: inset;
-    background: rgb(70, 255, 150);
-    }
-
-QPushButton
-{
-   color:white;
-}</string>
-   </property>
-   <property name="text">
-    <string>Back</string>
-   </property>
-  </widget>
   <widget class="QRadioButton" name="radioButtonSetGreen">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>240</y>
+     <x>245</x>
+     <y>160</y>
      <width>121</width>
      <height>41</height>
     </rect>
@@ -153,8 +138,8 @@ height: 7px;
   <widget class="QRadioButton" name="radioButtonSetDark">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>240</y>
+     <x>375</x>
+     <y>160</y>
      <width>101</width>
      <height>41</height>
     </rect>
@@ -192,7 +177,7 @@ height: 7px;
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>330</y>
+     <y>250</y>
      <width>171</width>
      <height>41</height>
     </rect>
@@ -219,8 +204,8 @@ height: 7px;
   <widget class="QRadioButton" name="radioButtonSetTimeMInuteThirty">
    <property name="geometry">
     <rect>
-     <x>285</x>
-     <y>330</y>
+     <x>295</x>
+     <y>250</y>
      <width>81</width>
      <height>41</height>
     </rect>
@@ -257,8 +242,8 @@ height: 7px;
   <widget class="QRadioButton" name="radioButtonSetTimeMInute">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>330</y>
+     <x>205</x>
+     <y>250</y>
      <width>81</width>
      <height>41</height>
     </rect>
@@ -296,14 +281,14 @@ height: 7px;
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>320</y>
+     <y>240</y>
      <width>440</width>
      <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">    border: 2px solid  rgb(102,205,170);
-</string>
+    <string notr="true">border: 3px solid #66CDAA;
+border-radius: 10px;</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -316,14 +301,14 @@ height: 7px;
    <property name="geometry">
     <rect>
      <x>50</x>
-     <y>230</y>
+     <y>150</y>
      <width>440</width>
      <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">    border: 2px solid  rgb(102,205,170);
-</string>
+    <string notr="true">border: 3px solid #66CDAA;
+border-radius: 10px;</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -335,8 +320,8 @@ height: 7px;
   <widget class="QRadioButton" name="radioButtonSetTimeTwoMinutes">
    <property name="geometry">
     <rect>
-     <x>375</x>
-     <y>330</y>
+     <x>380</x>
+     <y>250</y>
      <width>91</width>
      <height>41</height>
     </rect>
@@ -370,60 +355,136 @@ height: 7px;
     <string>2:00</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="RestoreSettings">
+  <widget class="QPushButton" name="Back">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>440</y>
-     <width>210</width>
-     <height>60</height>
+     <x>50</x>
+     <y>410</y>
+     <width>229</width>
+     <height>50</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Montserrat Medium</family>
-     <pointsize>16</pointsize>
+     <family>Montserrat</family>
+     <pointsize>-1</pointsize>
+     <italic>false</italic>
+     <bold>true</bold>
     </font>
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton {
-    color: #333;
-    border: 2px solid white;
-    border-radius: 30px;
-    border-style: outset;
-    background: rgb(102,205,170);
+background: #2CB67D;
+border: 4px solid #66CDAA;
+border-radius: 21px;
     padding: 5px;
     }
 
 QPushButton:hover {
-    background: rgb(3, 205, 150);
+    background: #66CDAB;
     }
 
 QPushButton:pressed {
-    border-style: inset;
-    background: rgb(70, 255, 150);
+    background: #2CB67D;
     }
 
 QPushButton
 {
-   color:white;
+ font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 22px;
+line-height: 29px;
+text-align: center;
+
+color: #FFFFFE;
+}</string>
+   </property>
+   <property name="text">
+    <string>Save and go back</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="RestoreSettings">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>410</y>
+     <width>201</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Montserrat</family>
+     <pointsize>-1</pointsize>
+     <italic>false</italic>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+background: #2CB67D;
+border: 4px solid #66CDAA;
+border-radius: 21px;
+    padding: 5px;
+    }
+
+QPushButton:hover {
+    background: #66CDAB;
+    }
+
+QPushButton:pressed {
+    background: #2CB67D;
+    }
+
+QPushButton
+{
+ font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 22px;
+line-height: 29px;
+text-align: center;
+
+color: #FFFFFE;
 }</string>
    </property>
    <property name="text">
     <string>Restore settings</string>
    </property>
   </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>541</width>
+     <height>517</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: 9px solid #66CDAA;
+</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+  <zorder>frame</zorder>
   <zorder>frame_7</zorder>
   <zorder>frame_5</zorder>
   <zorder>S</zorder>
   <zorder>label</zorder>
-  <zorder>Back</zorder>
   <zorder>radioButtonSetGreen</zorder>
   <zorder>radioButtonSetDark</zorder>
   <zorder>label_2</zorder>
   <zorder>radioButtonSetTimeMInuteThirty</zorder>
   <zorder>radioButtonSetTimeMInute</zorder>
   <zorder>radioButtonSetTimeTwoMinutes</zorder>
+  <zorder>Back</zorder>
   <zorder>RestoreSettings</zorder>
  </widget>
  <resources/>
