@@ -86,14 +86,14 @@ class CrocodileGame(QMainWindow):
         self.ui_window.StopTimer.setEnabled(False)
         self.ui_window.ResetTimer.setEnabled(False)
         self.ui_window.count = time[0]
-        self.ui_window.Time.setText("Time: " + str(self.ui_window.count / 10) + ' s')
+        self.ui_window.Time.setText("Time: " + str(time[0]/10) + ' s')
 
     # Retreive a random word from the database and check if the words are finished
     def get_next_word(self):
         self.ui_window.StopTimer.setEnabled(False)
         self.ui_window.ResetTimer.setEnabled(False)
         self.ui_window.count = time[0]
-        self.ui_window.Time.setText("Time: " + str(self.ui_window.count / 10) + ' s')
+        self.ui_window.Time.setText("Time: " + str(time[0]/10) + ' s')
 
         cursor.execute("SELECT * FROM allwords ORDER BY RANDOM() LIMIT 1")
         record = cursor.fetchall()
@@ -109,6 +109,8 @@ class CrocodileGame(QMainWindow):
                 self.ui_window.RandomPicture.setPixmap(random_picture)
                 if random_word not in used_words:
                     used_words.append(random_word)
+            if len(used_words) == len(word_count):
+                self.ui_window.NextWord.setEnabled(False)
 
     # Timer controllers
     def update_time(self):
@@ -173,13 +175,15 @@ class CrocodileGame(QMainWindow):
 
         while second <= 0 and done:
             second, done = QInputDialog.getInt(self, 'Setting time', 'Time must be more then 0:')
-        else:
+        if second > 0 and done:
             # changing the value of count
             self.ui_window.count = second * 10
             time.clear()
             time.append(second * 10)
             # setting text to the label
-            self.ui_window.Time.setText("Time: " + str(second) + ' s')
+            self.ui_window.Time.setText("Time: " + str(time[0]/10) + ' s')
+        else:
+            self.ui_window.Time.setText("Time: " + str(time[0]/10) + ' s')
 
     def start_timer(self):
         # making flag true
