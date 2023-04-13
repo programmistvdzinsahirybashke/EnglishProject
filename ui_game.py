@@ -23,6 +23,8 @@ class Ui_GameWindow(object):
         if not GameWindow.objectName():
             GameWindow.setObjectName(u"GameWindow")
         GameWindow.resize(600, 633)
+        GameWindow.setMinimumSize(600, 633)
+        GameWindow.setMaximumSize(600, 633)
         self.RandomPicture = QLabel(GameWindow)
         self.RandomPicture.setObjectName(u"RandomPicture")
         self.RandomPicture.setGeometry(QRect(30, 80, 530, 334))

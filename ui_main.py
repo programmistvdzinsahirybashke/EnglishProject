@@ -23,6 +23,8 @@ class Ui_StartWindow(object):
         if not StartWindow.objectName():
             StartWindow.setObjectName(u"StartWindow")
         StartWindow.resize(540, 516)
+        StartWindow.setMinimumSize(540, 516)
+        StartWindow.setMaximumSize(540, 516)
         font = QFont()
         font.setStrikeOut(False)
         StartWindow.setFont(font)
